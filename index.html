@@ -1041,5 +1041,60 @@
         <span>Member in Corporate Social Responsibility (CCC-Egypt)</span>
       </div>
     </section>
+  </div><!-- /content -->
+</main>
 
-  </div><!-- /content
+<footer>
+  <p>Tamer Abdel Hamid Mahmoud El Sayed &nbsp;·&nbsp;
+     <a href="http://eg.linkedin.com/in/tamerh">LinkedIn</a> &nbsp;·&nbsp;
+     <a href="https://www.credly.com/users/tamer-abdel-hamid.e0a20dd9">Credly</a>
+  </p>
+</footer>
+
+<!-- ═══ LIGHTBOX MODAL ═══════════════════════════════════ -->
+<div id="cert-overlay" role="dialog" aria-modal="true" aria-label="Certificate viewer">
+  <div class="overlay-inner">
+    <button id="cert-close" aria-label="Close">&#x2715;</button>
+    <img id="cert-img" src="" alt="Certificate"/>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('cert-overlay');
+  var img     = document.getElementById('cert-img');
+  var closeBtn= document.getElementById('cert-close');
+
+  // Open lightbox on click of any .cert-link card
+  document.querySelectorAll('.cert-link').forEach(function(el){
+    el.addEventListener('click', function(){
+      var src = el.getAttribute('data-img');
+      if(!src) return;
+      img.src = src;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    // Also allow keyboard activation
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); el.click(); }
+    });
+  });
+
+  function closeLightbox(){
+    overlay.classList.remove('active');
+    img.src = '';
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeLightbox);
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
+})();
+</script>
+
+</body>
+</html>
