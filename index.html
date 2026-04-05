@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Tamer Abdel Hamid – CV</title>  
+<title>Tamer Abdel Hamid – CV</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -545,6 +545,171 @@
   z-index:10; transition:background 0.2s;
 }
 #cert-close:hover { background:var(--teal,#1a6b72); }
+
+/* ── DOWNLOAD CV BUTTON ─────────────────────────────── */
+.cv-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--gold);
+  color: var(--navy) !important;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 3px 12px rgba(201,168,76,0.35);
+}
+.cv-download-btn:hover {
+  background: #e0bc5a;
+  transform: translateY(-1px);
+}
+
+/* ── POWER BI SECTION ───────────────────────────────── */
+.powerbi-card {
+  background: linear-gradient(135deg, var(--navy) 0%, #1a3a5c 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.powerbi-card .pb-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.pb-icon {
+  width: 52px; height: 52px;
+  background: #F2C811;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; flex-shrink: 0;
+}
+.pb-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+.pb-subtitle { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
+.pb-desc { font-size: 0.88rem; color: rgba(255,255,255,0.80); line-height: 1.7; }
+.pb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #F2C811;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  width: fit-content;
+  transition: background 0.2s;
+}
+.pb-btn:hover { background: #ffd633; }
+.pb-placeholder {
+  background: rgba(255,255,255,0.07);
+  border: 1px dashed rgba(255,255,255,0.25);
+  border-radius: 8px;
+  padding: 1.2rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* ── PROJECT CARDS ──────────────────────────────────── */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.2rem;
+}
+.project-card {
+  border: 1px solid var(--mid);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.project-card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+  transform: translateY(-3px);
+}
+.project-card .pc-header {
+  padding: 1.1rem 1.3rem 0.8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  border-bottom: 1px solid var(--mid);
+}
+.pc-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.pc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.pc-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 10px;
+  margin-top: 0.3rem;
+  background: rgba(26,107,114,0.10);
+  color: var(--teal);
+}
+.project-card .pc-body {
+  padding: 1rem 1.3rem 1.2rem;
+}
+.pc-desc {
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 0.8rem;
+}
+.pc-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.9rem;
+}
+.pc-tech span {
+  font-size: 0.72rem;
+  background: var(--light);
+  border: 1px solid var(--mid);
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  color: var(--navy);
+  font-weight: 500;
+}
+.pc-highlights { padding-left: 1rem; }
+.pc-highlights li {
+  font-size: 0.82rem;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.pc-coming {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+  padding: 0.5rem 0 0.2rem;
+}
+
 </style>
 
 </head>
@@ -572,15 +737,7 @@
       </div>
       <div class="contact-item">
         <span class="icon">✉</span>
-        <a id="eml" href="#" style="color:var(--gold)"></a>
-        <script>
-          (function(){
-            var u='tamer.h',d='hotmail.com';
-            var a=document.getElementById('eml');
-            a.href='mail'+'to:'+u+'@'+d;
-            a.textContent=u+'@'+d;
-          })();
-        </script>
+        <a href="/cdn-cgi/l/email-protection#f682979b9384d89eb69e99829b979f9ad895999b" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="5d293c30382f73351d353229303c3431733e3230">[email&#160;protected]</span></a>
       </div>
       <div class="contact-item">
         <span class="icon">in</span>
@@ -589,6 +746,11 @@
       <div class="contact-item">
         <span class="icon">🏅</span>
         <a href="https://www.credly.com/users/tamer-abdel-hamid.e0a20dd9" target="_blank">Credly Badges</a>
+      </div>
+      <div class="contact-item" style="margin-top:0.6rem;">
+        <a href="Tamer_A_Hamid_CV_full_doc.pdf" download class="cv-download-btn">
+          ⬇ Download CV
+        </a>
       </div>
     </div>
   </div>
@@ -602,6 +764,8 @@
     <li><a href="#inhouse">In-House Training</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#volunteering">Volunteering</a></li>
+    <li><a href="#powerbi">Power BI</a></li>
+    <li><a href="#projects">Projects</a></li>
   </ul>
 </nav>
 
@@ -1041,6 +1205,140 @@
         <span>Member in Corporate Social Responsibility (CCC-Egypt)</span>
       </div>
     </section>
+
+    <!-- POWER BI DASHBOARD -->
+    <section class="section" id="powerbi">
+      <div class="section-heading">
+        <div class="icon-badge">📊</div>
+        <h2>Power BI Live Dashboard</h2>
+        <div class="line"></div>
+      </div>
+      <div class="powerbi-card">
+        <div class="pb-header">
+          <div class="pb-icon">📊</div>
+          <div>
+            <p class="pb-title">Construction Analytics Dashboard</p>
+            <p class="pb-subtitle">Power BI Embedded · Live Data · Multi-Project KPIs</p>
+          </div>
+        </div>
+        <p class="pb-desc">
+          Interactive executive dashboard consolidating drawing production, submittal tracking,
+          working hours, and document control KPIs across 7 Egypt-area projects and 4 offices.
+          Built on SQL Server data warehouse <strong style="color:rgba(255,255,255,0.9)">DWH_DB_TC_BLD_NEW</strong>
+          with optimized CTEs and real-time Power BI refresh.
+        </p>
+        <div class="pb-placeholder">
+          🔗 &nbsp; Dashboard embed link coming soon — replace this block with your Power BI Publish-to-Web iframe
+        </div>
+        <!-- To embed: replace the div above with:
+        <iframe title="Dashboard" width="100%" height="480"
+          src="YOUR_POWERBI_PUBLISH_TO_WEB_URL"
+          frameborder="0" allowFullScreen="true" style="border-radius:8px;">
+        </iframe>
+        -->
+      </div>
+    </section>
+
+    <!-- CASE STUDIES / PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-heading">
+        <div class="icon-badge">🧠</div>
+        <h2>Case Studies &amp; Projects</h2>
+        <div class="line"></div>
+      </div>
+      <div class="project-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-icon">🗄️</div>
+            <div>
+              <p class="pc-title">Data Warehouse &amp; SQL Optimization</p>
+              <span class="pc-tag">Data Engineering</span>
+            </div>
+          </div>
+          <div class="pc-body">
+            <p class="pc-desc">
+              Designed and optimized the construction data warehouse
+              <strong>DWH_DB_TC_BLD_NEW</strong> handling 500,000+ records.
+              Rewrote legacy queries using CTEs, replaced FORMAT() with
+              CONVERT() for index efficiency, and reduced report generation
+              time significantly.
+            </p>
+            <div class="pc-tech">
+              <span>SQL Server</span><span>T-SQL</span><span>CTEs</span>
+              <span>Stored Procedures</span><span>Index Optimization</span>
+            </div>
+            <ul class="pc-highlights">
+              <li>Unified drawing production + working hours reports</li>
+              <li>Multi-currency grouping (LE &amp; USD) by Project &amp; REV</li>
+              <li>Optimized <code>[SDSubmittalSumm]</code> stored procedure</li>
+              <li>ETL pipelines from multiple enterprise sources</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-icon">📊</div>
+            <div>
+              <p class="pc-title">Power BI Executive Dashboards</p>
+              <span class="pc-tag">Business Intelligence</span>
+            </div>
+          </div>
+          <div class="pc-body">
+            <p class="pc-desc">
+              Developed interactive executive dashboards for senior management
+              across all Egypt-area construction projects, transforming raw
+              SQL Server data into actionable visual insights for non-technical
+              decision-makers.
+            </p>
+            <div class="pc-tech">
+              <span>Power BI</span><span>DAX</span><span>SQL Server</span>
+              <span>Data Modeling</span><span>KPI Design</span>
+            </div>
+            <ul class="pc-highlights">
+              <li>Drawing production tracking by discipline &amp; revision</li>
+              <li>Submittal status heatmaps across 7 projects</li>
+              <li>Working hours analytics with drill-through</li>
+              <li>Self-service BI for non-technical users</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-icon">⚙️</div>
+            <div>
+              <p class="pc-title">Document Control Automation</p>
+              <span class="pc-tag">Process Automation</span>
+            </div>
+          </div>
+          <div class="pc-body">
+            <p class="pc-desc">
+              Built a suite of automation tools to eliminate manual document
+              control tasks — from intelligent PDF renaming to browser-based
+              spell-checking with SQL UPDATE generation and VBA/ADO
+              Excel-to-database integration.
+            </p>
+            <div class="pc-tech">
+              <span>Python</span><span>VBA</span><span>SQL Server</span>
+              <span>Power Automate</span><span>SharePoint</span>
+            </div>
+            <ul class="pc-highlights">
+              <li>Python EXE: auto-rename PDFs by latest revision date</li>
+              <li>Browser spell-checker for SQL column values (domain-aware)</li>
+              <li>Auto-generates UPDATE statements from corrections</li>
+              <li>Excel ADO connector to VBC_DB_BLD via fn_GetPropertyVersionValue</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </div><!-- /content -->
 </main>
 
