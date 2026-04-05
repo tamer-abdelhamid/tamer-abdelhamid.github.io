@@ -503,6 +503,50 @@
   .section:nth-child(4) { animation-delay: 0.20s; }
   .section:nth-child(5) { animation-delay: 0.25s; }
 </style>
+
+<style>
+/* ── LIGHTBOX ─────────────────────────────────── */
+.cert-link { cursor:pointer; }
+.cert-link .cert-name { text-decoration: underline dotted var(--teal); }
+.cert-link:hover .cert-name { color: var(--teal); }
+.cert-link .cert-badge {
+  display:inline-block; margin-left:6px;
+  font-size:0.68rem; background:var(--teal); color:#fff;
+  padding:1px 6px; border-radius:10px; vertical-align:middle;
+  font-weight:600; letter-spacing:0.04em;
+}
+
+#cert-overlay {
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(10,22,38,0.92); align-items:center; justify-content:center;
+  padding:1.5rem;
+}
+#cert-overlay.active { display:flex; }
+#cert-overlay .overlay-inner {
+  position:relative; max-width:860px; width:100%;
+  background:#fff; border-radius:12px; overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  animation: popIn 0.25s ease;
+}
+@keyframes popIn {
+  from { transform:scale(0.88); opacity:0; }
+  to   { transform:scale(1);    opacity:1; }
+}
+#cert-overlay img {
+  width:100%; display:block; max-height:88vh; object-fit:contain;
+  background:#f4f1eb;
+}
+#cert-close {
+  position:absolute; top:10px; right:14px;
+  background:rgba(13,27,42,0.75); color:#fff;
+  border:none; border-radius:50%; width:36px; height:36px;
+  font-size:1.2rem; cursor:pointer; display:flex;
+  align-items:center; justify-content:center;
+  z-index:10; transition:background 0.2s;
+}
+#cert-close:hover { background:var(--teal,#1a6b72); }
+</style>
+
 </head>
 <body>
 
@@ -840,92 +884,92 @@
         <div class="line"></div>
       </div>
       <div class="cert-grid">
-        <div class="cert-card">
-          <p class="cert-name">Artificial Intelligence &amp; Digital Transformation</p>
+        <div class="cert-card cert-link" data-img="cert-07.jpg" role="button" tabindex="0">
+          <p class="cert-name">Artificial Intelligence &amp; Digital Transformation <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Nov 2024 · National Telecommunication Institute (NTI)</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Corporate Governance Management ISO 37000</p>
+        <div class="cert-card cert-link" data-img="cert-08.jpg" role="button" tabindex="0">
+          <p class="cert-name">Corporate Governance Management ISO 37000 <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Sep 2024 · Sadat Academy</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Governance &amp; Digital Transformation Ambassadors Program</p>
+        <div class="cert-card cert-link" data-img="cert-09.jpg" role="button" tabindex="0">
+          <p class="cert-name">Governance &amp; Digital Transformation Ambassadors Program <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Apr 2024 · Nile University (20 hrs)</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Google Data Analytics Professional Certificate</p>
+        <div class="cert-card cert-link" data-img="cert-10.jpg" role="button" tabindex="0">
+          <p class="cert-name">Google Data Analytics Professional Certificate <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Jul 2024 · Coursera / Google (8 courses)</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Introduction to Containers w/ Docker, Kubernetes &amp; OpenShift</p>
+        <div class="cert-card cert-link" data-img="cert-11.jpg" role="button" tabindex="0">
+          <p class="cert-name">Introduction to Containers w/ Docker, Kubernetes &amp; OpenShift <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Jun 2024 · Coursera / IBM</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Automate Doc. Review Process with SharePoint &amp; Power Automate</p>
+        <div class="cert-card cert-link" data-img="cert-12.jpg" role="button" tabindex="0">
+          <p class="cert-name">Automate Doc. Review Process with SharePoint &amp; Power Automate <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Apr 2024 · Coursera</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Monitoring &amp; Telemetry for Production Systems</p>
+        <div class="cert-card cert-link" data-img="cert-13.jpg" role="button" tabindex="0">
+          <p class="cert-name">Monitoring &amp; Telemetry for Production Systems <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Apr 2024 · Coursera</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Aconex Learning Explorer Badge (Associate, Professional &amp; Specialist)</p>
+        <div class="cert-card cert-link" data-img="cert-07.jpg" role="button" tabindex="0">
+          <p class="cert-name">Aconex Learning Explorer Badge (Associate, Professional &amp; Specialist) <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Dec 2023 · Oracle</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Python 101 – Develop Your First Python Program</p>
+        <div class="cert-card cert-link" data-img="cert-14.jpg" role="button" tabindex="0">
+          <p class="cert-name">Python 101 – Develop Your First Python Program <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Feb 2023 · Coursera</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Introduction to IoT and Digital Transformation</p>
+        <div class="cert-card cert-link" data-img="cert-17.jpg" role="button" tabindex="0">
+          <p class="cert-name">Introduction to IoT and Digital Transformation <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Jun 2022 · Cisco Networking Academy</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Front End Web Development Professional (Nanodegree)</p>
+        <div class="cert-card cert-link" data-img="cert-18.jpg" role="button" tabindex="0">
+          <p class="cert-name">Front End Web Development Professional (Nanodegree) <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Apr 2021 · Udacity (Scholarship – Egypt MCIT)</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Analyzing and Visualizing Data with Power BI (DAT207x)</p>
+        <div class="cert-card cert-link" data-img="cert-19.jpg" role="button" tabindex="0">
+          <p class="cert-name">Analyzing and Visualizing Data with Power BI (DAT207x) <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Aug 2016 · edX / Microsoft</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Excel for Data Analysis and Visualization (DAT206x)</p>
+        <div class="cert-card cert-link" data-img="cert-21.jpg" role="button" tabindex="0">
+          <p class="cert-name">Excel for Data Analysis and Visualization (DAT206x) <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Nov 2015 · edX / Microsoft</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Querying with Transact-SQL (DAT201x)</p>
+        <div class="cert-card cert-link" data-img="cert-22.jpg" role="button" tabindex="0">
+          <p class="cert-name">Querying with Transact-SQL (DAT201x) <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Oct 2015 · edX / Microsoft</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Innovation and IT Management (IS110x)</p>
+        <div class="cert-card cert-link" data-img="cert-23.jpg" role="button" tabindex="0">
+          <p class="cert-name">Innovation and IT Management (IS110x) <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Sep 2015 · edX / IIM Bangalore</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Microsoft Certified Database Administrator (MCDBA)</p>
+        <div class="cert-card cert-link" data-img="cert-29.jpg" role="button" tabindex="0">
+          <p class="cert-name">Microsoft Certified Database Administrator (MCDBA) <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Aug 2005 · YAT Education / Microsoft (232 hrs)</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Microsoft Visual FoxPro</p>
+        <div class="cert-card cert-link" data-img="cert-31.jpg" role="button" tabindex="0">
+          <p class="cert-name">Microsoft Visual FoxPro <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Sep 2003 · YAT Education / Microsoft (52 hrs)</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Visual Byblos Cyberspace (VBC) Documents Management System</p>
+        <div class="cert-card cert-link" data-img="cert-08.jpg" role="button" tabindex="0">
+          <p class="cert-name">Visual Byblos Cyberspace (VBC) Documents Management System <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">In-company training</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Primavera Enterprise P6 – Implementation &amp; Administration</p>
+        <div class="cert-card cert-link" data-img="cert-09.jpg" role="button" tabindex="0">
+          <p class="cert-name">Primavera Enterprise P6 – Implementation &amp; Administration <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">In-company training</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Aconex Documents Management System</p>
+        <div class="cert-card cert-link" data-img="cert-10.jpg" role="button" tabindex="0">
+          <p class="cert-name">Aconex Documents Management System <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Jan 2009 · Paracon Intl.</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">SharePoint as Documents Management System</p>
+        <div class="cert-card cert-link" data-img="cert-11.jpg" role="button" tabindex="0">
+          <p class="cert-name">SharePoint as Documents Management System <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Jan 2010 · CCB/QPM</p>
         </div>
-        <div class="cert-card">
-          <p class="cert-name">Primavera Expedition Professional (Presenter/Trainer)</p>
+        <div class="cert-card cert-link" data-img="cert-12.jpg" role="button" tabindex="0">
+          <p class="cert-name">Primavera Expedition Professional (Presenter/Trainer) <span class="cert-badge">📄 View</span></p>
           <p class="cert-meta">Dec 2007 · Saudi ARAMCo</p>
         </div>
         <div class="cert-card">
@@ -998,9 +1042,4 @@
       </div>
     </section>
 
-  </div><!-- /content -->
-</main>
-
-<footer>
-  <p>Tamer Abdel Hamid Mahmoud El Sayed &nbsp;·&nbsp;
-     <a href="http://eg.linkedin.com/in/tamerh">LinkedIn<
+  </div><!-- /content
