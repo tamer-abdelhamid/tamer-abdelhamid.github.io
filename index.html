@@ -710,6 +710,107 @@
   padding: 0.5rem 0 0.2rem;
 }
 
+
+/* ── AI ASSISTANT ───────────────────────────────────── */
+#ai-assistant .ai-wrap {
+  background: linear-gradient(160deg, #0d1b2a 0%, #0f2d3a 60%, #1a6b72 100%);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.ai-topbar {
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.ai-avatar {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--teal), #0d4a50);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(26,107,114,0.35);
+}
+.ai-topbar-info .ai-name { font-weight:700; color:#fff; font-size:0.95rem; }
+.ai-topbar-info .ai-status {
+  font-size:0.73rem; color:rgba(255,255,255,0.5);
+  display:flex; align-items:center; gap:0.35rem;
+}
+.ai-topbar-info .ai-status::before {
+  content:''; display:inline-block;
+  width:7px; height:7px; border-radius:50%;
+  background:#4ade80; box-shadow:0 0 6px #4ade80;
+}
+#ai-messages {
+  height: 360px; overflow-y: auto;
+  padding: 1.2rem 1.5rem;
+  display: flex; flex-direction: column; gap: 0.9rem;
+  scroll-behavior: smooth;
+}
+#ai-messages::-webkit-scrollbar { width: 4px; }
+#ai-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius:4px; }
+.msg {
+  max-width: 85%; padding: 0.65rem 1rem;
+  border-radius: 14px; font-size: 0.86rem; line-height: 1.6;
+  animation: msgIn 0.25s ease;
+}
+@keyframes msgIn {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.msg.user {
+  align-self:flex-end; background:var(--teal); color:#fff;
+  border-bottom-right-radius:4px;
+}
+.msg.bot {
+  align-self:flex-start;
+  background:rgba(255,255,255,0.09); color:rgba(255,255,255,0.88);
+  border-bottom-left-radius:4px; border:1px solid rgba(255,255,255,0.08);
+}
+.msg.typing {
+  align-self:flex-start;
+  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.08);
+  color:rgba(255,255,255,0.5); font-style:italic; font-size:0.82rem;
+}
+.ai-suggestions {
+  display:flex; flex-wrap:wrap; gap:0.5rem;
+  padding: 0.6rem 1.5rem 0.8rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.ai-suggestions button {
+  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.7); border-radius:20px;
+  padding:0.3rem 0.85rem; font-size:0.75rem; cursor:pointer;
+  font-family:'DM Sans',sans-serif; transition:background 0.2s,color 0.2s;
+}
+.ai-suggestions button:hover {
+  background:rgba(26,107,114,0.45); color:#fff; border-color:var(--teal);
+}
+.ai-inputbar {
+  display:flex; gap:0.6rem;
+  padding:0.9rem 1.5rem 1.2rem;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+#ai-input {
+  flex:1; background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:8px; padding:0.6rem 1rem;
+  color:#fff; font-size:0.87rem;
+  font-family:'DM Sans',sans-serif; outline:none;
+  transition:border-color 0.2s;
+}
+#ai-input::placeholder { color:rgba(255,255,255,0.35); }
+#ai-input:focus { border-color:var(--teal); }
+#ai-send {
+  background:var(--gold); color:var(--navy);
+  border:none; border-radius:8px;
+  padding:0.6rem 1.1rem; font-weight:700; font-size:0.85rem;
+  cursor:pointer; transition:background 0.2s,transform 0.15s;
+  font-family:'DM Sans',sans-serif;
+}
+#ai-send:hover { background:#e0bc5a; transform:translateY(-1px); }
+#ai-send:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+
+
 </style>
 
 </head>
@@ -774,6 +875,7 @@
     <li><a href="#volunteering">Volunteering</a></li>
     <li><a href="#powerbi">Power BI</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#ai-assistant">Ask AI</a></li>
   </ul>
 </nav>
 
@@ -1346,6 +1448,111 @@
 
       </div>
     </section>
+
+
+    <!-- AI ASSISTANT -->
+    <section class="section" id="ai-assistant">
+      <div class="section-heading">
+        <div class="icon-badge">🤖</div>
+        <h2>Ask My AI Assistant</h2>
+        <div class="line"></div>
+      </div>
+      <p style="font-size:0.87rem;color:var(--muted);margin-bottom:1.2rem;">
+        Have a question about my experience, skills, or background? Ask the AI assistant — powered by Claude.
+      </p>
+      <div class="ai-wrap">
+        <div class="ai-topbar">
+          <div class="ai-avatar">🤖</div>
+          <div class="ai-topbar-info">
+            <p class="ai-name">Tamer&#39;s AI Assistant</p>
+            <p class="ai-status">Online &middot; Powered by Claude</p>
+          </div>
+        </div>
+        <div id="ai-messages">
+          <div class="msg bot">
+            &#128075; Hello! I&#39;m Tamer&#39;s AI assistant. Ask me anything about his experience, skills, certifications, or projects!
+          </div>
+        </div>
+        <div class="ai-suggestions">
+          <button onclick="askSuggestion(this)">What are his top skills?</button>
+          <button onclick="askSuggestion(this)">Describe his experience</button>
+          <button onclick="askSuggestion(this)">What certifications does he have?</button>
+          <button onclick="askSuggestion(this)">Is he open to opportunities?</button>
+        </div>
+        <div class="ai-inputbar">
+          <input id="ai-input" type="text" placeholder="Ask about Tamer&#39;s experience, skills, projects&#8230;" autocomplete="off"/>
+          <button id="ai-send" onclick="sendAiMessage()">Send &#10148;</button>
+        </div>
+      </div>
+    </section>
+
+<script>
+(function(){
+  var SYSTEM = "You are Tamer's professional AI assistant embedded in his CV website. Answer questions about Tamer Abdel Hamid Mahmoud El Sayed based ONLY on the following profile. Be concise, professional, and friendly. Speak in third person about Tamer. Keep answers under 150 words. If asked something not covered, invite them to contact Tamer at tamer.h@hotmail.com.\n\nPROFILE:\n- Full name: Tamer Abdel Hamid Mahmoud El Sayed\n- Location: New Cairo, Egypt | Mobile: +2 010 05305451 | Email: tamer.h@hotmail.com\n- LinkedIn: http://eg.linkedin.com/in/tamerh\n- Title: Document & Data Control Manager | Digital Transformation Expert | Power BI | SQL Server | Process Automation\n- Experience: 24+ years in Document Control, Data Management, Digital Transformation across multinational construction mega-projects (power plants, oil & gas, airports, buildings)\n- Current role: Head of Document-Data Control Technical Support at Consolidated Contractors Intl. Co. (CCIC) since October 2011. Managing 7 projects & 4 offices across Egypt.\n- Key technical skills: SQL Server (T-SQL, CTEs, Stored Procedures, performance tuning), Power BI (DAX, dashboards, data modeling), Python, VBA, Power Automate, SharePoint, Primavera P6, Aconex (Oracle), ETL pipelines, Data Governance, MDM\n- Education: Bachelor's Degree in Accounting, Faculty of Commerce, Benha University, 1998\n- Key certifications: Google Data Analytics Professional Certificate (2024), MCDBA Microsoft Certified Database Administrator (2005), Udacity Front End Web Development Nanodegree (2021), Power BI Microsoft/edX (2016), Transact-SQL Microsoft/edX (2015), Governance & Digital Transformation Nile University (2024), AI & Digital Transformation NTI (2024), Docker/Kubernetes/OpenShift IBM/Coursera (2024)\n- Notable projects: Data Warehouse optimization (DWH_DB_TC_BLD_NEW 500K+ records), Power BI executive dashboards for construction KPIs, Document Control automation (Python PDF renamer, SQL spell-checker, Excel VBA ADO integration)\n- Past employers: CCIC Egypt (2011-present), CCIC Libya Sebha Airport EUR 280M (2009), PARACON Egypt (2008-2009), CCIC Saudi Arabia KFDP USD 500M (2007-2008), CCIC Saudi Arabia KPF USD 580M (2005-2007), CCIC Cairo North Power Plant (2002-2005), Orascom City Stars USD 340M (1999-2002)\n- Languages: Arabic (Native), English (Very Good)\n- Volunteering: Member of Digital Transformation Committee Egypt & North Africa; CCC Corporate Social Responsibility member";
+  var history = [];
+  var msgs  = document.getElementById('ai-messages');
+  var input = document.getElementById('ai-input');
+  var send  = document.getElementById('ai-send');
+
+  function scrollDown(){ msgs.scrollTop = msgs.scrollHeight; }
+
+  function addMsg(text, role){
+    var d = document.createElement('div');
+    d.className = 'msg ' + role;
+    d.textContent = text;
+    msgs.appendChild(d);
+    scrollDown();
+    return d;
+  }
+
+  window.askSuggestion = function(btn){
+    input.value = btn.textContent;
+    sendAiMessage();
+  };
+
+  window.sendAiMessage = async function(){
+    var text = input.value.trim();
+    if(!text || send.disabled) return;
+    input.value = '';
+    send.disabled = true;
+
+    addMsg(text, 'user');
+    history.push({role:'user', content:text});
+    var typing = addMsg('Thinking…', 'typing');
+
+    try {
+      var res = await fetch('https://YOUR_WORKER_NAME.YOUR_SUBDOMAIN.workers.dev/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system: SYSTEM,
+          messages: history
+        })
+      });
+      var data = await res.json();
+      if(data.error){
+        typing.remove();
+        addMsg('Error: ' + data.error, 'bot');
+        send.disabled = false;
+        return;
+      }
+      var reply = data.reply || 'Sorry, no response received.';
+      typing.remove();
+      addMsg(reply, 'bot');
+      history.push({role:'assistant', content:reply});
+    } catch(e){
+      typing.remove();
+      addMsg('Could not reach the assistant. Please try again later.', 'bot');
+    }
+    send.disabled = false;
+    input.focus();
+  };
+
+  input.addEventListener('keydown', function(e){
+    if(e.key==='Enter') sendAiMessage();
+  });
+})();
+</script>
 
   </div><!-- /content -->
 </main>
