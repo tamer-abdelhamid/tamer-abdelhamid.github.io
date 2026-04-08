@@ -2,17 +2,6 @@
 <html lang="en">
 <head>
 
-  <!-- ═══ FAVICON & APP ICONS ════════════════════════════════════════ -->
-  <link rel="icon"             type="image/x-icon"    href="favicon.ico"/>
-  <link rel="icon"             type="image/png"        href="favicon-32x32.png" sizes="32x32"/>
-  <link rel="icon"             type="image/png"        href="favicon-16x16.png" sizes="16x16"/>
-  <link rel="icon"             type="image/png"        href="favicon-96x96.png" sizes="96x96"/>
-  <link rel="apple-touch-icon" type="image/png"        href="apple-touch-icon.png" sizes="180x180"/>
-  <link rel="manifest"                                 href="site.webmanifest"/>
-  <meta name="theme-color"     content="#0d1b2a"/>
-  <meta name="msapplication-TileColor" content="#0d1b2a"/>
-  <meta name="msapplication-TileImage" content="favicon-192x192.png"/>
-
   <!-- ═══ SEO & DISCOVERY ══════════════════════════════════════════════ -->
 
   <!-- Primary SEO -->
@@ -1855,9 +1844,9 @@
     // ── Worker URL — replace with your actual Cloudflare Worker URL ──
     var WORKER_URL = 'https://tamer-cv-ai.tamer-h.workers.dev/chat';
 
-    if(WORKER_URL.indexOf('YOUR_WORKER_NAME') !== -1){
+    if(WORKER_URL.indexOf('https://tamer-cv-ai.tamer-h.workers.dev/chat') !== -1){
       typing.remove();
-      addMsg('⚙️ Setup needed: please update the Worker URL in index.html.', 'bot');
+      addMsg('⚙️ Setup needed: The AI assistant is not connected yet. Please update the Worker URL in index.html with your actual Cloudflare Worker URL.', 'bot');
       send.disabled = false;
       return;
     }
@@ -1950,4 +1939,18 @@
     document.body.style.overflow = '';
   }
 
-  closeBtn.addEventListener('click', closeLigh
+  closeBtn.addEventListener('click', closeLightbox);
+
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
+
+})();
+</script>
+
+</body>
+</html>
