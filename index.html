@@ -1844,7 +1844,7 @@
     // ── Worker URL — replace with your actual Cloudflare Worker URL ──
     var WORKER_URL = 'https://tamer-cv-ai.tamer-h.workers.dev/chat';
 
-    if(WORKER_URL.indexOf('tamer-cv-ai') !== -1){
+    if(WORKER_URL.indexOf('https://tamer-cv-ai.tamer-h.workers.dev/chat') !== -1){
       typing.remove();
       addMsg('⚙️ Setup needed: The AI assistant is not connected yet. Please update the Worker URL in index.html with your actual Cloudflare Worker URL.', 'bot');
       send.disabled = false;
