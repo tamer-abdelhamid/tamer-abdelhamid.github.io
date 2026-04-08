@@ -1841,8 +1841,18 @@
     history.push({role:'user', content:text});
     var typing = addMsg('Thinking…', 'typing');
 
+    // ── Worker URL — replace with your actual Cloudflare Worker URL ──
+    var WORKER_URL = 'https://tamer-cv-ai.tamer-h.workers.dev/chat';
+
+    if(WORKER_URL.indexOf('tamer-cv-ai') !== -1){
+      typing.remove();
+      addMsg('⚙️ Setup needed: The AI assistant is not connected yet. Please update the Worker URL in index.html with your actual Cloudflare Worker URL.', 'bot');
+      send.disabled = false;
+      return;
+    }
+
     try {
-      var res = await fetch('https://YOUR_WORKER_NAME.YOUR_SUBDOMAIN.workers.dev/chat', {
+      var res = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1850,6 +1860,14 @@
           messages: history
         })
       });
+
+      if(!res.ok){
+        typing.remove();
+        addMsg('Server error (' + res.status + '). Please try again.', 'bot');
+        send.disabled = false;
+        return;
+      }
+
       var data = await res.json();
       if(data.error){
         typing.remove();
@@ -1863,7 +1881,7 @@
       history.push({role:'assistant', content:reply});
     } catch(e){
       typing.remove();
-      addMsg('Could not reach the assistant. Please try again later.', 'bot');
+      addMsg('⚠️ Could not reach the AI assistant. Make sure your Cloudflare Worker is deployed and the URL in index.html is correct. Error: ' + e.message, 'bot');
     }
     send.disabled = false;
     input.focus();
