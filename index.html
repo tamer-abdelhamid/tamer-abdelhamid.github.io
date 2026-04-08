@@ -1830,6 +1830,8 @@
     sendAiMessage();
   };
 
+  var WORKER_URL = 'https://tamer-cv-ai.tamer-h.workers.dev/chat';
+
   window.sendAiMessage = async function(){
     var text = input.value.trim();
     if(!text || send.disabled) return;
@@ -1837,52 +1839,44 @@
     send.disabled = true;
 
     addMsg(text, 'user');
-    if(typeof trackAiQuery!=='undefined') trackAiQuery(text);
-    history.push({role:'user', content:text});
+    if(typeof trackAiQuery !== 'undefined') trackAiQuery(text);
+    history.push({ role: 'user', content: text });
     var typing = addMsg('Thinking…', 'typing');
-
-    // ── Worker URL — replace with your actual Cloudflare Worker URL ──
-    var WORKER_URL = 'https://tamer-cv-ai.tamer-h.workers.dev/chat';
-
-    if(WORKER_URL.indexOf('https://tamer-cv-ai.tamer-h.workers.dev/chat') !== -1){
-      typing.remove();
-      addMsg('⚙️ Setup needed: The AI assistant is not connected yet. Please update the Worker URL in index.html with your actual Cloudflare Worker URL.', 'bot');
-      send.disabled = false;
-      return;
-    }
 
     try {
       var res = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          system: SYSTEM,
-          messages: history
-        })
+        body: JSON.stringify({ system: SYSTEM, messages: history })
       });
 
-      if(!res.ok){
+      if (!res.ok) {
         typing.remove();
         addMsg('Server error (' + res.status + '). Please try again.', 'bot');
         send.disabled = false;
+        input.focus();
         return;
       }
 
       var data = await res.json();
-      if(data.error){
+      if (data.error) {
         typing.remove();
         addMsg('Error: ' + data.error, 'bot');
         send.disabled = false;
+        input.focus();
         return;
       }
-      var reply = data.reply || 'Sorry, no response received.';
+
+      var reply = (data.reply && data.reply.trim()) ? data.reply : 'Sorry, no response received.';
       typing.remove();
       addMsg(reply, 'bot');
-      history.push({role:'assistant', content:reply});
-    } catch(e){
+      history.push({ role: 'assistant', content: reply });
+
+    } catch(e) {
       typing.remove();
-      addMsg('⚠️ Could not reach the AI assistant. Make sure your Cloudflare Worker is deployed and the URL in index.html is correct. Error: ' + e.message, 'bot');
+      addMsg('Could not reach the assistant (' + e.message + '). Please try again.', 'bot');
     }
+
     send.disabled = false;
     input.focus();
   };
