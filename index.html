@@ -803,6 +803,179 @@
   letter-spacing: 0.04em;
 }
 
+/* Keep Power BI screenshots as fixed thumbnails so they never stretch the page */
+.pb-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+}
+.pb-project {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
+}
+.pb-project-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+}
+.pb-project-num {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(242,200,17,0.18);
+  color: #F2C811;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.pb-project-info {
+  flex: 1;
+  min-width: 0;
+}
+.pb-project-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+.pb-project-sub {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+}
+.pb-project-toggle {
+  margin-left: auto;
+  color: rgba(255,255,255,0.8);
+  transition: transform 0.2s ease;
+}
+.pb-project.open .pb-project-toggle {
+  transform: rotate(180deg);
+}
+.pb-thumbs {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.9rem;
+  padding: 0 1.1rem 1.1rem;
+  width: 100%;
+  min-width: 0;
+}
+.pb-project.open .pb-thumbs {
+  display: grid;
+}
+.pb-thumb-item {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 0;
+}
+.pb-thumb-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+}
+.pb-thumb-item img {
+  display: block;
+  width: 100%;
+  height: 110px;
+  max-width: 100%;
+  object-fit: cover;
+}
+.pb-thumb-label {
+  padding: 0.65rem 0.75rem 0.8rem;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.92);
+  text-align: center;
+  word-break: break-word;
+}
+
+#dash-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10,22,38,0.92);
+  padding: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+#dash-overlay.active {
+  display: flex;
+}
+.dash-modal {
+  position: relative;
+  width: min(960px, 100%);
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  animation: popIn 0.25s ease;
+}
+.dash-title {
+  padding: 1rem 1.25rem 0.4rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+#dash-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: calc(90vh - 120px);
+  object-fit: contain;
+  background: #f4f1eb;
+}
+#dash-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: rgba(13,27,42,0.75);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.dash-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.25rem 1.15rem;
+}
+.dash-nav button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  background: var(--teal);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+.dash-counter {
+  color: var(--navy);
+  font-weight: 600;
+}
+
 /* ── PROJECT CARDS ──────────────────────────────────── */
 .project-grid {
   display: grid;
@@ -1721,35 +1894,35 @@
               <span class="pb-project-toggle">▼</span>
             </div>
             <div class="pb-thumbs">
-              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],0)">
+              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],['Data Portal Home','Project Summary Charts','DWGs Submission','Monthly Report (Issued)','Production Progress','Drawings Chart','Drawings Submitted','Production KPI'],0)">
                 <img src="project1_01.jpg" alt="Data Portal Home"/>
                 <div class="pb-thumb-label">Data Portal Home</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],1)">
+              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],['Data Portal Home','Project Summary Charts','DWGs Submission','Monthly Report (Issued)','Production Progress','Drawings Chart','Drawings Submitted','Production KPI'],1)">
                 <img src="project1_02.jpg" alt="Project Summary Charts"/>
                 <div class="pb-thumb-label">Project Summary Charts</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],2)">
+              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],['Data Portal Home','Project Summary Charts','DWGs Submission','Monthly Report (Issued)','Production Progress','Drawings Chart','Drawings Submitted','Production KPI'],2)">
                 <img src="project1_03.jpg" alt="DWGs Submission"/>
                 <div class="pb-thumb-label">DWGs Submission</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],3)">
+              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],['Data Portal Home','Project Summary Charts','DWGs Submission','Monthly Report (Issued)','Production Progress','Drawings Chart','Drawings Submitted','Production KPI'],3)">
                 <img src="project1_04.jpg" alt="Monthly Report (Issued)"/>
                 <div class="pb-thumb-label">Monthly Report (Issued)</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],4)">
+              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],['Data Portal Home','Project Summary Charts','DWGs Submission','Monthly Report (Issued)','Production Progress','Drawings Chart','Drawings Submitted','Production KPI'],4)">
                 <img src="project1_05.jpg" alt="Production Progress"/>
                 <div class="pb-thumb-label">Production Progress</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],5)">
+              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],['Data Portal Home','Project Summary Charts','DWGs Submission','Monthly Report (Issued)','Production Progress','Drawings Chart','Drawings Submitted','Production KPI'],5)">
                 <img src="project1_06.jpg" alt="Drawings Chart"/>
                 <div class="pb-thumb-label">Drawings Chart</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],6)">
+              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],['Data Portal Home','Project Summary Charts','DWGs Submission','Monthly Report (Issued)','Production Progress','Drawings Chart','Drawings Submitted','Production KPI'],6)">
                 <img src="project1_07.jpg" alt="Drawings Submitted"/>
                 <div class="pb-thumb-label">Drawings Submitted</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],7)">
+              <div class="pb-thumb-item" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],['Data Portal Home','Project Summary Charts','DWGs Submission','Monthly Report (Issued)','Production Progress','Drawings Chart','Drawings Submitted','Production KPI'],7)">
                 <img src="project1_08.jpg" alt="Production KPI"/>
                 <div class="pb-thumb-label">Production KPI</div>
               </div>
@@ -1767,27 +1940,27 @@
               <span class="pb-project-toggle">▼</span>
             </div>
             <div class="pb-thumbs">
-              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],0)">
+              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],['Data Portal Home','Project Drawings','DWGs Submission Summary','Tech. Docs Submission','Technical Documents','Project Summary'],0)">
                 <img src="project2_01.jpg" alt="Data Portal Home"/>
                 <div class="pb-thumb-label">Data Portal Home</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],1)">
+              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],['Data Portal Home','Project Drawings','DWGs Submission Summary','Tech. Docs Submission','Technical Documents','Project Summary'],1)">
                 <img src="project2_02.jpg" alt="Project Drawings"/>
                 <div class="pb-thumb-label">Project Drawings</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],2)">
+              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],['Data Portal Home','Project Drawings','DWGs Submission Summary','Tech. Docs Submission','Technical Documents','Project Summary'],2)">
                 <img src="project2_03.jpg" alt="DWGs Submission Summary"/>
                 <div class="pb-thumb-label">DWGs Submission Summary</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],3)">
+              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],['Data Portal Home','Project Drawings','DWGs Submission Summary','Tech. Docs Submission','Technical Documents','Project Summary'],3)">
                 <img src="project2_04.jpg" alt="Tech. Docs Submission"/>
                 <div class="pb-thumb-label">Tech. Docs Submission</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],4)">
+              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],['Data Portal Home','Project Drawings','DWGs Submission Summary','Tech. Docs Submission','Technical Documents','Project Summary'],4)">
                 <img src="project2_05.jpg" alt="Technical Documents"/>
                 <div class="pb-thumb-label">Technical Documents</div>
               </div>
-              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],5)">
+              <div class="pb-thumb-item" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],['Data Portal Home','Project Drawings','DWGs Submission Summary','Tech. Docs Submission','Technical Documents','Project Summary'],5)">
                 <img src="project2_06.jpg" alt="Project Summary"/>
                 <div class="pb-thumb-label">Project Summary</div>
               </div>
@@ -2078,18 +2251,22 @@
 
 <!-- DASHBOARD LIGHTBOX -->
 <div id="dash-overlay">
-  <button id="dash-close" onclick="closeDash()">&#x2715;</button>
-  <img id="dash-img" src="" alt="Dashboard screenshot"/>
-  <div class="dash-nav">
-    <button onclick="dashNav(-1)">&#8592; Prev</button>
-    <span class="dash-counter" id="dash-counter">1 / 1</span>
-    <button onclick="dashNav(1)">Next &#8594;</button>
+  <div class="dash-modal">
+    <button id="dash-close" onclick="closeDash()">&#x2715;</button>
+    <div class="dash-title" id="dash-title">Dashboard screenshot</div>
+    <img id="dash-img" src="" alt="Dashboard screenshot"/>
+    <div class="dash-nav">
+      <button onclick="dashNav(-1)">&#8592; Prev</button>
+      <span class="dash-counter" id="dash-counter">1 / 1</span>
+      <button onclick="dashNav(1)">Next &#8594;</button>
+    </div>
   </div>
 </div>
 
 <script>
 // ── Dashboard gallery ──────────────────────────────────────────────────────
 var dashImages = [];
+var dashTitles = [];
 var dashIndex  = 0;
 
 window.togglePbProject = function(id) {
@@ -2097,8 +2274,9 @@ window.togglePbProject = function(id) {
   el.classList.toggle('open');
 };
 
-window.openDash = function(images, idx) {
+window.openDash = function(images, titles, idx) {
   dashImages = images;
+  dashTitles = titles || [];
   dashIndex  = idx;
   renderDash();
   document.getElementById('dash-overlay').classList.add('active');
@@ -2118,6 +2296,7 @@ window.dashNav = function(dir) {
 
 function renderDash() {
   document.getElementById('dash-img').src = dashImages[dashIndex];
+  document.getElementById('dash-title').textContent = dashTitles[dashIndex] || 'Dashboard screenshot';
   document.getElementById('dash-counter').textContent = (dashIndex + 1) + ' / ' + dashImages.length;
 }
 
