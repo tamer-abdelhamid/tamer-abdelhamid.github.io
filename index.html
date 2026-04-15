@@ -1707,16 +1707,52 @@
           Built on SQL Server data warehouse <strong style="color:rgba(255,255,255,0.9)">DWH_DB_TC_BLD_NEW</strong>
           with optimized CTEs and real-time Power BI refresh.
         </p>
-        <div class="pb-placeholder">
-	<!-- replace this block with your Power BI Publish-to-Web iframe -->
-          🔗 &nbsp; Dashboard embed link coming soon — 
+
+        <div class="pb-projects">
+
+          <!-- Project 1: SD/AB Projects Portal -->
+          <div class="pb-project open" id="pb1">
+            <div class="pb-project-header" onclick="togglePbProject('pb1')">
+              <div class="pb-project-num">1</div>
+              <div class="pb-project-info">
+                <p class="pb-project-name">SD/AB Projects — Document Control Data Portal</p>
+                <p class="pb-project-sub">Shop Drawings · Tech. Docs · RFIs · Production KPIs · Approval Summary · 8 interactive reports</p>
+              </div>
+              <span class="pb-project-toggle">▼</span>
+            </div>
+            <div class="pb-thumbs">
+              <img class="pb-thumb" src="project1_01.jpg" alt="Data Portal Home" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],0)"/>
+              <img class="pb-thumb" src="project1_02.jpg" alt="Project Summary" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],1)"/>
+              <img class="pb-thumb" src="project1_03.jpg" alt="DWGs Submission" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],2)"/>
+              <img class="pb-thumb" src="project1_04.jpg" alt="Monthly Report" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],3)"/>
+              <img class="pb-thumb" src="project1_05.jpg" alt="Production Progress" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],4)"/>
+              <img class="pb-thumb" src="project1_06.jpg" alt="Drawings Chart" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],5)"/>
+              <img class="pb-thumb" src="project1_07.jpg" alt="Drawings Submitted Summary" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],6)"/>
+              <img class="pb-thumb" src="project1_08.jpg" alt="Production KPI" onclick="openDash(['project1_01.jpg','project1_02.jpg','project1_03.jpg','project1_04.jpg','project1_05.jpg','project1_06.jpg','project1_07.jpg','project1_08.jpg'],7)"/>
+            </div>
+          </div>
+
+          <!-- Project 2: XXX Project Portal -->
+          <div class="pb-project" id="pb2">
+            <div class="pb-project-header" onclick="togglePbProject('pb2')">
+              <div class="pb-project-num">2</div>
+              <div class="pb-project-info">
+                <p class="pb-project-name">FDTP Project — Document Control Data Portal</p>
+                <p class="pb-project-sub">DWGs Submission · Tech. Docs · Technical Documents Chart · RFIs · Project Summary · 6 interactive reports</p>
+              </div>
+              <span class="pb-project-toggle">▼</span>
+            </div>
+            <div class="pb-thumbs">
+              <img class="pb-thumb" src="project2_01.jpg" alt="FDTP Portal Home" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],0)"/>
+              <img class="pb-thumb" src="project2_02.jpg" alt="Project Drawings" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],1)"/>
+              <img class="pb-thumb" src="project2_03.jpg" alt="DWGs Submission Summary" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],2)"/>
+              <img class="pb-thumb" src="project2_04.jpg" alt="Tech Docs Submission" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],3)"/>
+              <img class="pb-thumb" src="project2_05.jpg" alt="Technical Documents" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],4)"/>
+              <img class="pb-thumb" src="project2_06.jpg" alt="Project Summary" onclick="openDash(['project2_01.jpg','project2_02.jpg','project2_03.jpg','project2_04.jpg','project2_05.jpg','project2_06.jpg'],5)"/>
+            </div>
+          </div>
+
         </div>
-        <!-- To embed: replace the div above with:
-        <iframe title="Dashboard" width="100%" height="480"
-          src="YOUR_POWERBI_PUBLISH_TO_WEB_URL"
-          frameborder="0" allowFullScreen="true" style="border-radius:8px;">
-        </iframe>
-        -->
       </div>
     </section>
 
@@ -1995,6 +2031,65 @@
   });
 
 })();
+</script>
+
+
+<!-- DASHBOARD LIGHTBOX -->
+<div id="dash-overlay">
+  <button id="dash-close" onclick="closeDash()">&#x2715;</button>
+  <img id="dash-img" src="" alt="Dashboard screenshot"/>
+  <div class="dash-nav">
+    <button onclick="dashNav(-1)">&#8592; Prev</button>
+    <span class="dash-counter" id="dash-counter">1 / 1</span>
+    <button onclick="dashNav(1)">Next &#8594;</button>
+  </div>
+</div>
+
+<script>
+// ── Dashboard gallery ──────────────────────────────────────────────────────
+var dashImages = [];
+var dashIndex  = 0;
+
+window.togglePbProject = function(id) {
+  var el = document.getElementById(id);
+  el.classList.toggle('open');
+};
+
+window.openDash = function(images, idx) {
+  dashImages = images;
+  dashIndex  = idx;
+  renderDash();
+  document.getElementById('dash-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeDash = function() {
+  document.getElementById('dash-overlay').classList.remove('active');
+  document.getElementById('dash-img').src = '';
+  document.body.style.overflow = '';
+};
+
+window.dashNav = function(dir) {
+  dashIndex = (dashIndex + dir + dashImages.length) % dashImages.length;
+  renderDash();
+};
+
+function renderDash() {
+  document.getElementById('dash-img').src = dashImages[dashIndex];
+  document.getElementById('dash-counter').textContent = (dashIndex + 1) + ' / ' + dashImages.length;
+}
+
+document.getElementById('dash-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeDash();
+});
+
+document.addEventListener('keydown', function(e) {
+  var overlay = document.getElementById('dash-overlay');
+  if (!overlay.classList.contains('active')) return;
+  if (e.key === 'Escape')      closeDash();
+  if (e.key === 'ArrowRight')  dashNav(1);
+  if (e.key === 'ArrowLeft')   dashNav(-1);
+});
 </script>
 
 </body>
