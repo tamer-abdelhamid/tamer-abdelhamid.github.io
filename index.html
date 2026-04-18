@@ -871,6 +871,40 @@
 .pb-project.open .pb-thumbs {
   display: grid;
 }
+/* Thumbs used outside the Power BI accordion (e.g. project cards) */
+.pc-thumbs {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.9rem;
+  padding: 0.2rem 0 0.2rem;
+  width: 100%;
+}
+.pc-thumbs .pb-thumb-item {
+  background: var(--light);
+  border: 1px solid var(--mid);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pc-thumbs .pb-thumb-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+.pc-thumbs .pb-thumb-item img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+}
+.pc-thumbs .pb-thumb-label {
+  font-size: 0.7rem;
+  color: var(--navy);
+  text-align: center;
+  padding: 0.35rem 0.4rem;
+  font-weight: 600;
+  background: var(--light);
+}
 .pb-thumb-item {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
@@ -2065,6 +2099,53 @@
               <li>Auto-generates UPDATE statements from corrections</li>
               <li>Excel ADO connector to VBC_DB_BLD via fn_GetPropertyVersionValue</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-icon">✉️</div>
+            <div>
+              <p class="pc-title">System Self-Check Email Notifications</p>
+              <span class="pc-tag">Data Quality Automation</span>
+            </div>
+          </div>
+          <div class="pc-body">
+            <p class="pc-desc">
+              Automated self-check email alerts sent instantly to users upon any
+              incorrect or incomplete data entry in the DMS — covering template
+              mismatches, missing discipline/date fields, and metadata errors.
+              Ensures immediate corrective action before records are finalised,
+              eliminating downstream data quality issues.
+            </p>
+            <p class="pc-desc" style="font-style:italic;color:var(--teal);font-size:0.8rem;">
+              Example: Drawing discipline registered as <strong>Mech.</strong> instead of <strong>Elec.</strong> — error detected and corrected instantly via automated notification.
+            </p>
+            <div class="pc-tech">
+              <span>SQL Server</span><span>DMS</span><span>SMTP Automation</span>
+              <span>Data Validation</span><span>Automated Email Notification</span>
+            </div>
+            <ul class="pc-highlights">
+              <li>Instant alerts on incorrect Template, Discipline, or Date fields</li>
+              <li>Auto-generated email with full document metadata table</li>
+              <li>Sent directly to responsible user with CC to DCG team</li>
+              <li>Drives zero-tolerance data entry accuracy across all projects</li>
+            </ul>
+            <div class="pc-thumbs" style="margin-top:1rem;">
+              <div class="pb-thumb-item" onclick="openDash(['case4_01.jpg','case4_02.jpg','case4_03.jpg'],['Incorrect Template — username','Incorrect/Missing Issue Date — username','Incorrect/Missing Discipline — username'],0)">
+                <img src="case4_01.jpg" alt="Incorrect Template notification"/>
+                <div class="pb-thumb-label">Incorrect Template</div>
+              </div>
+              <div class="pb-thumb-item" onclick="openDash(['case4_01.jpg','case4_02.jpg','case4_03.jpg'],['Incorrect Template — username','Incorrect/Missing Issue Date — username','Incorrect/Missing Discipline — username'],1)">
+                <img src="case4_02.jpg" alt="Incorrect/Missing Issue Date notification"/>
+                <div class="pb-thumb-label">Missing Issue Date</div>
+              </div>
+              <div class="pb-thumb-item" onclick="openDash(['case4_01.jpg','case4_02.jpg','case4_03.jpg'],['Incorrect Template — username','Incorrect/Missing Issue Date — username','Incorrect/Missing Discipline — username'],2)">
+                <img src="case4_03.jpg" alt="Incorrect/Missing Discipline notification"/>
+                <div class="pb-thumb-label">Incorrect Discipline</div>
+              </div>
+            </div>
           </div>
         </div>
 
