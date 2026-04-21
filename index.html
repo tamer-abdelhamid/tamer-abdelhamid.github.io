@@ -2497,7 +2497,7 @@ document.addEventListener('keydown', function(e) {
       gtag('event', 'cv_request', { event_category: 'CV', event_label: email });
     }
 
-	var EMAILJS_SERVICE  = 'CV_Request_Service';   // ← your Service ID
+	var EMAILJS_SERVICE  = 'service_7ps80uw';   // ← your Service ID
 	var EMAILJS_TEMPLATE = 'template_8jhoofo';  // ← your Template ID
 	var EMAILJS_KEY      = '-YJ6hZKYOMlC8Iy7d'; // ← your Public Key
 
@@ -2509,7 +2509,13 @@ document.addEventListener('keydown', function(e) {
       .then(function() { showCvSuccess(email); })
       .catch(function() { cvFallback(email); });
     } else {
-      cvFallback(email);
+      // EmailJS not configured yet — show friendly message, no mailto popup
+      var btn = document.getElementById('cv-send-btn');
+      btn.textContent = 'Send Me the CV';
+      btn.disabled = false;
+      var errEl = document.getElementById('cv-email-err');
+      errEl.textContent = 'Email service not configured yet. Please contact tamer.h@hotmail.com directly.';
+      errEl.style.display = 'block';
     }
   }
   function showCvSuccess(email) {
@@ -2519,10 +2525,12 @@ document.addEventListener('keydown', function(e) {
     document.getElementById('cv-success-area').style.display = 'block';
   }
   function cvFallback(email) {
-    window.location.href = 'mailto:tamer.h@hotmail.com'
-      + '?subject=CV%20Request%20from%20' + encodeURIComponent(email)
-      + '&body=CV%20requested%20by%3A%20' + encodeURIComponent(email);
-    showCvSuccess(email);
+    var btn = document.getElementById('cv-send-btn');
+    btn.textContent = 'Send Me the CV';
+    btn.disabled = false;
+    var errEl = document.getElementById('cv-email-err');
+    errEl.textContent = 'Something went wrong. Please email tamer.h@hotmail.com directly.';
+    errEl.style.display = 'block';
   }
 </script>
 
