@@ -5,10 +5,6 @@
   function resolveAsset(path) {
     if (!path) return path;
     if (/^(https?:|data:|\/|\.\/|\.\.\/)/i.test(path)) return path;
-    if (/^cert\//i.test(path) || /^powerbi_files\//i.test(path) || /^case_files\//i.test(path)) return path;
-    if (/^(cert-|cert-in-|cert-vo-)/i.test(path)) return 'cert/' + path;
-    if (/^project[0-9]+_/i.test(path)) return 'powerbi_files/' + path;
-    if (/^case[0-9]+_/i.test(path)) return 'case_files/' + path;
     return path;
   }
 
