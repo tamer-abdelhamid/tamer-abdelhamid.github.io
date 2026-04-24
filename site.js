@@ -52,6 +52,12 @@
     };
   }
 
+  window.askAiAboutCurrentVisual = function(prefill) {
+    if (typeof window.openAiModal === 'function') {
+      window.openAiModal(prefill || 'Explain this image');
+    }
+  };
+
   function normalizeAssetAttributes() {
     document.querySelectorAll('img[src]').forEach(function(img) {
       img.src = resolveAsset(img.getAttribute('src'));
@@ -66,6 +72,7 @@
     var overlay = document.getElementById('cert-overlay');
     var img = document.getElementById('cert-img');
     var closeBtn = document.getElementById('cert-close');
+    var askAiBtn = document.getElementById('cert-ask-ai');
     if (!overlay || !img || !closeBtn) return;
 
     document.querySelectorAll('.cert-link').forEach(function(el){
@@ -98,6 +105,11 @@
     }
 
     closeBtn.addEventListener('click', closeLightbox);
+    if (askAiBtn) {
+      askAiBtn.addEventListener('click', function() {
+        window.askAiAboutCurrentVisual('Explain this certificate or image');
+      });
+    }
     overlay.addEventListener('click', function(e){
       if(e.target === overlay) closeLightbox();
     });
@@ -111,6 +123,7 @@
     var dashImg = document.getElementById('dash-img');
     var dashTitle = document.getElementById('dash-title');
     var dashCounter = document.getElementById('dash-counter');
+    var dashAskAi = document.getElementById('dash-ask-ai');
     if (!overlay || !dashImg || !dashTitle || !dashCounter) return;
 
     var dashImages = [];
@@ -155,6 +168,12 @@
     overlay.addEventListener('click', function(e) {
       if (e.target === overlay) window.closeDash();
     });
+
+    if (dashAskAi) {
+      dashAskAi.addEventListener('click', function() {
+        window.askAiAboutCurrentVisual('Explain this dashboard or case-study image');
+      });
+    }
 
     document.addEventListener('keydown', function(e) {
       if (!overlay.classList.contains('active')) return;
@@ -420,6 +439,7 @@
   initAiModal();
   initAiAssistant();
 })();
+
 
 
 
