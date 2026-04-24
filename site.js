@@ -66,6 +66,7 @@
       evt.stopPropagation();
     }
     window.askAiAboutCurrentVisual(prefill);
+    return false;
   };
 
   function normalizeAssetAttributes() {
@@ -116,6 +117,12 @@
 
     closeBtn.addEventListener('click', closeLightbox);
     if (askAiBtn) {
+      ['mousedown', 'mouseup', 'click'].forEach(function(eventName) {
+        askAiBtn.addEventListener(eventName, function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+      });
       askAiBtn.addEventListener('click', function(e) {
         window.openAiFromCurrentVisual(e, 'What does this screenshot show?', 'certificate');
       });
@@ -179,6 +186,12 @@
       if (e.target === overlay) window.closeDash();
     });
     if (dashAskAi) {
+      ['mousedown', 'mouseup', 'click'].forEach(function(eventName) {
+        dashAskAi.addEventListener(eventName, function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+      });
       dashAskAi.addEventListener('click', function(e) {
         window.openAiFromCurrentVisual(e, 'What does this screenshot show?', 'visual');
       });
@@ -448,6 +461,7 @@
   initAiModal();
   initAiAssistant();
 })();
+
 
 
 

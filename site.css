@@ -553,6 +553,8 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+  position: relative;
+  z-index: 30;
   border: none;
   border-radius: 999px;
   padding: 0.55rem 0.95rem;
@@ -2038,6 +2040,7 @@ footer {
     width: 100%;
   }
 }
+
 
 
 
