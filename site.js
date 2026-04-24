@@ -131,7 +131,7 @@
     closeBtn.addEventListener('click', closeLightbox);
     if (askAiBtn) {
       askAiBtn.addEventListener('click', function(e) {
-        window.openAiFromCurrentVisual(e, 'Explain this certificate or image', 'certificate');
+        window.openAiFromCurrentVisual(e, 'What does this screenshot show?', 'certificate');
       });
     }
     overlay.addEventListener('click', function(e){
@@ -194,7 +194,7 @@
     });
     if (dashAskAi) {
       dashAskAi.addEventListener('click', function(e) {
-        window.openAiFromCurrentVisual(e, 'Explain this dashboard or case-study image', 'visual');
+        window.openAiFromCurrentVisual(e, 'What does this screenshot show?', 'visual');
       });
     }
 
@@ -462,6 +462,7 @@
   initAiModal();
   initAiAssistant();
 })();
+
 
 
 
