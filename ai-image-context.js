@@ -3,7 +3,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Data Portal Home",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal",
+    "projectName": "Engineering Project - Data Portal",
     "summary": "Landing dashboard that introduces the reporting portal and gives a high-level entry point into project controls, document metrics, and production monitoring.",
     "whatItShows": [
       "executive dashboard home view",
@@ -16,7 +16,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Project Summary Charts",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal",
+    "projectName": "Engineering Project - Data Portal",
     "summary": "Summary charts view focused on project-level performance indicators and visual trend reporting.",
     "whatItShows": [
       "summary-level project charts",
@@ -29,7 +29,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "DWGs Submission",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal",
+    "projectName": "Engineering Project - Data Portal",
     "summary": "Dashboard screen focused on drawing submission activity and document control workflow for engineering drawings.",
     "whatItShows": [
       "drawing submission volume",
@@ -42,7 +42,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Monthly Report (Issued)",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal",
+    "projectName": "Engineering Project - Data Portal",
     "summary": "Monthly issued-document reporting screen showing formal reporting output for management follow-up.",
     "whatItShows": [
       "monthly issued report metrics",
@@ -55,7 +55,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Production Progress",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal",
+    "projectName": "Engineering Project - Data Portal",
     "summary": "Dashboard view centered on production progress and operational delivery monitoring.",
     "whatItShows": [
       "production progress indicators",
@@ -68,7 +68,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Drawings Chart",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal",
+    "projectName": "Engineering Project - Data Portal",
     "summary": "Chart-oriented view for drawing analytics, likely highlighting counts, categories, or submission movement.",
     "whatItShows": [
       "drawing-related charts",
@@ -81,7 +81,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Drawings Submitted",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal",
+    "projectName": "Engineering Project - Data Portal",
     "summary": "Screen focused on submitted drawings and their reporting status inside the project controls environment.",
     "whatItShows": [
       "submitted drawing counts or status",
@@ -94,7 +94,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Production KPI",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal",
+    "projectName": "Engineering Project - Data Portal",
     "summary": "KPI-focused production screen showing measurable indicators for operational and reporting performance.",
     "whatItShows": [
       "production KPIs",
@@ -107,7 +107,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Data Portal Home",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal - Project 2",
+    "projectName": "EPC Project - Data Portal",
     "summary": "Second project portal home view that acts as the entry point to its dashboard suite.",
     "whatItShows": [
       "portal landing page",
@@ -120,7 +120,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Project Drawings",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal - Project 2",
+    "projectName": "EPC Project - Data Portal",
     "summary": "Drawing-focused reporting view for project engineering documentation.",
     "whatItShows": [
       "project drawing records",
@@ -133,7 +133,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "DWGs Submission Summary",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal - Project 2",
+    "projectName": "EPC Project - Data Portal",
     "summary": "Summary view for drawing submission analytics and document control reporting.",
     "whatItShows": [
       "drawing submission summary",
@@ -146,7 +146,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Tech. Docs Submission",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal - Project 2",
+    "projectName": "EPC Project - Data Portal",
     "summary": "Dashboard screen focused on technical document submission performance.",
     "whatItShows": [
       "technical document submission status",
@@ -159,7 +159,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Technical Documents",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal - Project 2",
+    "projectName": "EPC Project - Data Portal",
     "summary": "Reporting view dedicated to technical documents and their organized monitoring.",
     "whatItShows": [
       "technical document records",
@@ -172,7 +172,7 @@ window.AI_IMAGE_CONTEXT = {
     "title": "Project Summary",
     "type": "powerbi",
     "collection": "Power BI dashboards",
-    "projectName": "Data Portal - Project 2",
+    "projectName": "EPC Project - Data Portal",
     "summary": "High-level summary dashboard for overall project reporting and management review.",
     "whatItShows": [
       "project summary indicators",
