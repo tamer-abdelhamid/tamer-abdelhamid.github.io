@@ -379,6 +379,9 @@
 
 <div id="cert-overlay" role="dialog" aria-modal="true" aria-label="Certificate viewer">
   <div class="overlay-inner">
+    <div class="overlay-actions">
+      <button id="cert-ask-ai" class="overlay-ai-btn" type="button" onclick="openAiFromCurrentVisual('Explain this certificate or image','certificate')">Ask AI About This</button>
+    </div>
     <button id="cert-close" aria-label="Close">&#x2715;</button>
     <img id="cert-img" src="" alt="Certificate"/>
   </div>
@@ -386,6 +389,9 @@
 
 <div id="dash-overlay">
   <div class="dash-modal">
+    <div class="overlay-actions">
+      <button id="dash-ask-ai" class="overlay-ai-btn" type="button" onclick="openAiFromCurrentVisual('Explain this dashboard or case-study image','visual')">Ask AI About This</button>
+    </div>
     <button id="dash-close" onclick="closeDash()">&#x2715;</button>
     <div class="dash-title" id="dash-title">Dashboard screenshot</div>
     <img id="dash-img" src="" alt="Dashboard screenshot"/>
