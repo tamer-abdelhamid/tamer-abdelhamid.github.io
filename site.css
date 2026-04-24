@@ -538,8 +538,15 @@
 .overlay-actions {
   position: absolute;
   top: 10px;
-  left: 14px;
   z-index: 10;
+}
+
+#cert-overlay .overlay-actions {
+  right: 58px;
+}
+
+#dash-overlay .overlay-actions {
+  position: static;
 }
 .overlay-ai-btn {
   border: none;
@@ -859,6 +866,7 @@
 }
 .dash-nav .overlay-ai-btn {
   background: var(--navy);
+  margin-left: auto;
 }
 .dash-counter {
   color: var(--navy);
@@ -2026,6 +2034,8 @@ footer {
     width: 100%;
   }
 }
+
+
 
 
 

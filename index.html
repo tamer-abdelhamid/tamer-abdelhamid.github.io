@@ -389,9 +389,6 @@
 
 <div id="dash-overlay">
   <div class="dash-modal">
-    <div class="overlay-actions">
-      <button id="dash-ask-ai" class="overlay-ai-btn" type="button" onclick="openAiFromCurrentVisual('Explain this dashboard or case-study image','visual')">Ask AI About This</button>
-    </div>
     <button id="dash-close" onclick="closeDash()">&#x2715;</button>
     <div class="dash-title" id="dash-title">Dashboard screenshot</div>
     <img id="dash-img" src="" alt="Dashboard screenshot"/>
@@ -399,6 +396,7 @@
       <button onclick="dashNav(-1)">&#8592; Prev</button>
       <span class="dash-counter" id="dash-counter">1 / 1</span>
       <button onclick="dashNav(1)">Next &#8594;</button>
+      <button id="dash-ask-ai" class="overlay-ai-btn" type="button" onclick="openAiFromCurrentVisual('Explain this dashboard or case-study image','visual')">Ask AI About This</button>
     </div>
   </div>
 </div>
