@@ -73,12 +73,14 @@
       if (certImg) certImg.src = '';
     }
 
-    if (overlayType === 'visual' && typeof window.closeDash === 'function') {
-      window.closeDash();
-    } else {
-      document.body.style.overflow = '';
+    if (overlayType === 'visual') {
+      var dashOverlay = document.getElementById('dash-overlay');
+      var dashImg = document.getElementById('dash-img');
+      if (dashOverlay) dashOverlay.classList.remove('active');
+      if (dashImg) dashImg.src = '';
     }
 
+    document.body.style.overflow = '';
     window.askAiAboutCurrentVisual(prefill);
   };
 
