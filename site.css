@@ -1714,6 +1714,23 @@ main {
   color: var(--navy);
 }
 
+.about-fact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 1.25rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(26,107,114,0.08);
+  border: 1px solid rgba(26,107,114,0.14);
+  color: var(--navy);
+  font-size: 0.88rem;
+}
+
+.about-fact strong {
+  color: var(--teal);
+}
+
 .about-body p {
   margin-bottom: 1rem;
   color: var(--muted);
@@ -1983,6 +2000,8 @@ footer {
     width: 100%;
   }
 }
+
+
 
 
 
