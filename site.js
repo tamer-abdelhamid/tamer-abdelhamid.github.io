@@ -1,11 +1,55 @@
 ﻿(function(){
   var AI_SYSTEM_PROMPT = "You are Tamer\u0027s professional AI assistant embedded in his CV website. Answer questions about Tamer Abdel Hamid Mahmoud El Sayed based ONLY on the following profile. Be concise, professional, and friendly. Speak in third person about Tamer. Keep answers under 150 words. If asked something not covered, invite them to contact Tamer at tamer.h@hotmail.com.\\n\\nPROFILE:\\n- Full name: Tamer Abdel Hamid Mahmoud El Sayed\\n- Location: New Cairo, Egypt | Mobile: +2 010 05305451 | Email: tamer.h@hotmail.com\\n- LinkedIn: http://eg.linkedin.com/in/tamerh\\n- Title: Document \u0026 Data Control Manager | Digital Transformation Expert | Power BI | SQL Server | Process Automation\\n- Experience: 25+ years in Document Control, Data Management, Digital Transformation across multinational construction mega-projects (power plants, oil \u0026 gas, airports, buildings)\\n- Current role: Head of Document-Data Control Technical Support at Consolidated Contractors Intl. Co. (CCIC) since October 2011. Managing 7 projects \u0026 4 offices across Egypt.\\n- Key technical skills: SQL Server (T-SQL, CTEs, Stored Procedures, performance tuning), Power BI (DAX, dashboards, data modeling), Python, VBA, Power Automate, SharePoint, Primavera P6, Aconex (Oracle), ETL pipelines, Data Governance, MDM\\n- Education: Bachelor\u0027s Degree in Accounting, Faculty of Commerce, Benha University, 1998\\n- Key certifications: Google Data Analytics Professional Certificate (2024), MCDBA Microsoft Certified Database Administrator (2005), Udacity Front End Web Development Nanodegree (2021), Power BI Microsoft/edX (2016), Transact-SQL Microsoft/edX (2015), Governance \u0026 Digital Transformation Nile University (2024), AI \u0026 Digital Transformation NTI (2024), Docker/Kubernetes/OpenShift IBM/Coursera (2024)\\n- Notable projects: Data Warehouse optimization (DWH 500K+ records), Power BI executive dashboards for construction KPIs, Document Control automation (Python PDF renamer, SQL spell-checker, Excel VBA ADO integration)\\n- Past employers: CCIC Egypt (2011-present), CCIC Libya Sebha Airport EUR 280M (2009), PARACON Egypt (2008-2009), CCIC Saudi Arabia KFDP USD 500M (2007-2008), CCIC Saudi Arabia KPF USD 580M (2005-2007), CCIC Cairo North Power Plant (2002-2005), Orascom City Stars USD 340M (1999-2002)\\n- Languages: Arabic (Native), English (Very Good)\\n- Volunteering: Member of Digital Transformation Committee Egypt \u0026 North Africa; CCC Corporate Social Responsibility member";
   var AI_WORKER_URL = 'https://tamer-cv-ai.tamer-h.workers.dev/chat';
+  var AI_IMAGE_CONTEXT = window.AI_IMAGE_CONTEXT || {};
+  window.currentAiContext = null;
 
   function resolveAsset(path) {
     if (!path) return path;
     if (/^(https?:|data:|\/|\.\/|\.\.\/)/i.test(path)) return path;
     return path;
+  }
+
+  function getAssetBasename(path) {
+    if (!path) return '';
+    return String(path).split('/').pop();
+  }
+
+  function buildImageContext(file, title, sourceType) {
+    var basename = getAssetBasename(file);
+    var meta = basename ? AI_IMAGE_CONTEXT[basename] : null;
+    var context = {
+      file: basename || '',
+      title: title || (meta && meta.title) || '',
+      sourceType: sourceType || ''
+    };
+
+    if (meta) {
+      Object.keys(meta).forEach(function(key) {
+        context[key] = meta[key];
+      });
+    }
+
+    return context.file || context.title ? context : null;
+  }
+
+  function setCurrentAiContext(file, title, sourceType) {
+    window.currentAiContext = buildImageContext(file, title, sourceType);
+  }
+
+  function clearCurrentAiContext(sourceType) {
+    if (!window.currentAiContext) return;
+    if (!sourceType || window.currentAiContext.sourceType === sourceType) {
+      window.currentAiContext = null;
+    }
+  }
+
+  function getPageContext() {
+    return {
+      pageTitle: document.title,
+      pagePath: window.location.pathname || '',
+      pageUrl: window.location.href
+    };
   }
 
   function normalizeAssetAttributes() {
@@ -28,10 +72,11 @@
       el.addEventListener('click', function(){
         var src = resolveAsset(el.getAttribute('data-img'));
         if(!src) return;
+        var nameEl = el.querySelector('.cert-name');
         img.src = src;
         overlay.classList.add('active');
+        setCurrentAiContext(src, nameEl ? nameEl.textContent : src, 'certificate');
         if(typeof trackCertView !== 'undefined') {
-          var nameEl = el.querySelector('.cert-name');
           trackCertView(nameEl ? nameEl.textContent : src);
         }
         document.body.style.overflow = 'hidden';
@@ -48,6 +93,7 @@
     function closeLightbox() {
       overlay.classList.remove('active');
       img.src = '';
+      clearCurrentAiContext('certificate');
       document.body.style.overflow = '';
     }
 
@@ -81,6 +127,7 @@
       dashImg.src = dashImages[dashIndex];
       dashTitle.textContent = dashTitles[dashIndex] || 'Dashboard screenshot';
       dashCounter.textContent = (dashIndex + 1) + ' / ' + dashImages.length;
+      setCurrentAiContext(dashImages[dashIndex], dashTitles[dashIndex], 'visual');
     }
 
     window.openDash = function(images, titles, idx) {
@@ -95,6 +142,7 @@
     window.closeDash = function() {
       overlay.classList.remove('active');
       dashImg.src = '';
+      clearCurrentAiContext('visual');
       document.body.style.overflow = '';
     };
 
@@ -322,7 +370,12 @@
         var res = await fetch(AI_WORKER_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ system: AI_SYSTEM_PROMPT, messages: history })
+          body: JSON.stringify({
+            system: AI_SYSTEM_PROMPT,
+            messages: history,
+            pageContext: getPageContext(),
+            imageContext: window.currentAiContext
+          })
         });
 
         if (!res.ok) {
@@ -367,6 +420,7 @@
   initAiModal();
   initAiAssistant();
 })();
+
 
 
 
