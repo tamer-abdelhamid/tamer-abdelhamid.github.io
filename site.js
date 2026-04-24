@@ -65,22 +65,6 @@
     if (evt && typeof evt.stopPropagation === 'function') {
       evt.stopPropagation();
     }
-
-    if (overlayType === 'certificate') {
-      var certOverlay = document.getElementById('cert-overlay');
-      var certImg = document.getElementById('cert-img');
-      if (certOverlay) certOverlay.classList.remove('active');
-      if (certImg) certImg.src = '';
-    }
-
-    if (overlayType === 'visual') {
-      var dashOverlay = document.getElementById('dash-overlay');
-      var dashImg = document.getElementById('dash-img');
-      if (dashOverlay) dashOverlay.classList.remove('active');
-      if (dashImg) dashImg.src = '';
-    }
-
-    document.body.style.overflow = '';
     window.askAiAboutCurrentVisual(prefill);
   };
 
